@@ -1,4 +1,4 @@
-package br.com.persistence;
+package br.com.persistence.Variados;
 
 import java.io.Serializable;
 import java.time.Instant;

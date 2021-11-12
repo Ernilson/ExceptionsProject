@@ -1,3 +1,4 @@
+package br.com.persistence.Variados;
 //package br.com.persistence;
 //package br.com.persistence.exceptions;
 //

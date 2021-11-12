@@ -1,4 +1,4 @@
-package br.com.persistence.Model;
+package br.com.persistence.data.Model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

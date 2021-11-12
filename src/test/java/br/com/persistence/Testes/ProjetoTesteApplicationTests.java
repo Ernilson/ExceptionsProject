@@ -1,12 +1,15 @@
-package br.com.persistence;
+package br.com.persistence.Testes;
+
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import br.com.persistence.Model.Cadastro;
 import br.com.persistence.Repository.CadastroRepository;
 import br.com.persistence.ServiceImpl.CadastroServiceImplements;
+import br.com.persistence.data.Model.Cadastro;
+import br.com.persistence.data.VO.CadastroVO;
 
 @SpringBootTest
 class ProjetoTesteApplicationTests {
@@ -17,18 +20,18 @@ class ProjetoTesteApplicationTests {
 	@Autowired
 	private CadastroServiceImplements csi;
 	
-	@Test
-	void salvaCadastro() {
-		Cadastro cad = new Cadastro();
-		//Long ids = 18L;
-	//	cad.setId(ids);
-		cad.setNome("funcionou");
-		cad.setEndereco("teste0");
-		cad.setTelefone("00001");
+//	@Test
+//	void salvaCadastro() {
+//		Cadastro cad = new Cadastro();
+//		//Long ids = 18L;
+//	//	cad.setId(ids);
+//		cad.setNome("funcionou");
+//		cad.setEndereco("teste0");
+//		cad.setTelefone("00001");
+//		
+//		cadRep.save(cad);
 		
-		cadRep.save(cad);
-		
-	}
+//	}
 	
 //	@Test
 //	void alteraCadastro() {
@@ -44,20 +47,20 @@ class ProjetoTesteApplicationTests {
 	//Metodo para Listar todos do cadastro
 //   @Test
 //   public void listar () {	   
-//       List <Cadastro> cad = csi.listAll();
+//       List <CadastroVO> cad = csi.listAll();
 //       System.out.println ("Total de Registros" + cad.size ());
-//       for (Cadastro c: cad) {
+//       for (CadastroVO c: cad) {
 //           System.out.println (c.getEndereco() + "-" + c.getNome());
 //       }       
 //   }
    
    //Metodo para Bucar por id
-   @Test
-   public void buscar () {
-       Long t= 1L;
-       Cadastro p = csi.buscaPorId(t);
-        System.out.println (p.getNome() + "-" + p.getEndereco() + "-" + p.getTelefone());
-   }
+//   @Test
+//   public void buscar () {
+//       Long t= 1L;
+//       Cadastro p = csi.buscaPorId(t);
+//        System.out.println (p.getNome() + "-" + p.getEndereco() + "-" + p.getTelefone());
+//   }
        
      //Metodo para Excluir
 //   @Test
