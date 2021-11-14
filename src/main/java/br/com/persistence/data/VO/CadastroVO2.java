@@ -1,35 +1,28 @@
-package br.com.persistence.data.Model;
+package br.com.persistence.data.VO;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-
-@Entity
-@Table(name="cadastro")
-public class Cadastro {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
-	@Column(nullable = false)
-	private String nome;
-	@Column(nullable = false)
-	private String Endereco;	
-	private String Telefone;
-	private String zap;	
+public class CadastroVO2 implements Serializable{
 	
-	public Cadastro() {
+	private static final long serialVersionUID = 1L;
+
+	private Long id;
+	
+	private String nome;
+	
+	private String Endereco;
+	
+	private String Telefone;
+	
+	private String zap;
+	
+	public CadastroVO2() {
 		
 	}
 
-	public Cadastro(Long id, String nome, String endereco, String telefone, String zap) {
+	public CadastroVO2(Long id, String nome, String endereco, String telefone, String zap) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -80,7 +73,7 @@ public class Cadastro {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(Endereco, Telefone, id, nome, zap);
+		return Objects.hash(id);
 	}
 
 	@Override
@@ -91,17 +84,14 @@ public class Cadastro {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Cadastro other = (Cadastro) obj;
-		return Objects.equals(Endereco, other.Endereco) && Objects.equals(Telefone, other.Telefone)
-				&& Objects.equals(id, other.id) && Objects.equals(nome, other.nome) && Objects.equals(zap, other.zap);
+		CadastroVO2 other = (CadastroVO2) obj;
+		return Objects.equals(id, other.id);
 	}
 
 	@Override
 	public String toString() {
-		return "Cadastro [id=" + id + ", nome=" + nome + ", Endereco=" + Endereco + ", Telefone=" + Telefone + ", zap="
-				+ zap + "]";
+		return "CadastroVO2 [id=" + id + ", nome=" + nome + ", Endereco=" + Endereco + ", Telefone=" + Telefone
+				+ ", zap=" + zap + "]";
 	}
 	
-	
-		
 }

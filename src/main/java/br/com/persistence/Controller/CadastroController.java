@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.persistence.ServiceImpl.CadastroServiceImplements;
 import br.com.persistence.data.VO.CadastroVO;
+import br.com.persistence.data.VO.CadastroVO2;
 import br.com.persistence.exceptions.DefaultError;
 import lombok.extern.slf4j.Slf4j;
 
@@ -32,6 +33,12 @@ public class CadastroController {
 	@GetMapping
 	public List<CadastroVO> listALL() {
 		return csi.listAll();
+	}
+	
+	//Metodo para trazer todos cadastros v2
+	@GetMapping("/v2")
+	public List<CadastroVO2> listAllv2() {
+		return csi.listAllv2();
 	}
 
 	@GetMapping(path = {"/{id}" })
@@ -48,13 +55,36 @@ public class CadastroController {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(err);
 		}
 	}
+	
+	//Metodo para burcar por Id v2
+	@GetMapping(path = {"/{id}/v2"})
+	public ResponseEntity findByIdVO2(@PathVariable long id) {
+		try {
+			CadastroVO2 cad = csi.buscaPorIdVO2(id);
+			return ResponseEntity.ok().body(cad);
+			
+		} catch (Exception e) {			
+			DefaultError err = new DefaultError ();
+			err.setTimestamp(Instant.now()); err.setStatus(HttpStatus.NOT_FOUND.value());
+			err.setError("Resource not found");	err.setMessage(e.getMessage());
+			err.setPath("/cadastro/ " + id); log.info("Long mostra ->");
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(err);
+		}
+	}
 
 	@PostMapping()
 	@ResponseStatus(HttpStatus.CREATED)
-	public ResponseEntity savaOrUpdateCadastro(@RequestBody CadastroVO c) {
+	public ResponseEntity savaCadastro(@RequestBody CadastroVO c) {
 		csi.salve(c);
 		return ResponseEntity.ok("OK");
 		// throw new NullPointerException();
+	}
+	
+	@PostMapping("/v2")
+	@ResponseStatus(HttpStatus.CREATED)
+	public ResponseEntity savaCadastroV2(@RequestBody CadastroVO2 c) {
+		csi.salveVO2(c);
+		return ResponseEntity.ok("OK");		
 	}
 	
 	@PutMapping

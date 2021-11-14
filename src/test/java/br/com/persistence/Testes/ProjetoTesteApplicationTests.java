@@ -1,6 +1,7 @@
 package br.com.persistence.Testes;
 
-import java.util.List;
+import java.sql.Timestamp;
+import java.util.Date;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,8 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import br.com.persistence.Repository.CadastroRepository;
 import br.com.persistence.ServiceImpl.CadastroServiceImplements;
-import br.com.persistence.data.Model.Cadastro;
-import br.com.persistence.data.VO.CadastroVO;
+import br.com.persistence.data.VO.CadastroVO2;
 
 @SpringBootTest
 class ProjetoTesteApplicationTests {
@@ -30,8 +30,21 @@ class ProjetoTesteApplicationTests {
 //		cad.setTelefone("00001");
 //		
 //		cadRep.save(cad);
-		
-//	}
+	
+	@Test
+	void salvaCadastroVO2() {
+		try {
+			CadastroVO2 cad = new CadastroVO2();
+			cad.setNome("novoteste2");
+			cad.setEndereco("teste2");
+			cad.setTelefone("0002");
+			cad.setZap("123452");
+			csi.salveVO2(cad);	
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+			
+	}
 	
 //	@Test
 //	void alteraCadastro() {
